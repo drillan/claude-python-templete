@@ -43,7 +43,7 @@ Write all documentation in [MyST](https://mystmd.org/guide) format (Markdown for
 
 **Common patterns**:
 
-```markdown
+````markdown
 # Table of contents
 ```{contents}
 :depth: 2
@@ -61,7 +61,7 @@ This is a note.
 def example():
     pass
 ```
-```
+````
 
 ### Tone and Style
 
@@ -131,7 +131,7 @@ key = null
 ```
 
 #### Unknown lexers
-```text
+````text
 # ❌ サポートされていないlexerを使用しない
 ```unknownlang
 code here
@@ -141,7 +141,7 @@ code here
 ```text
 code here
 ```
-```
+````
 
 #### Special characters
 ```python
@@ -151,6 +151,46 @@ result → value  # ハイライトエラーの原因となる可能性
 # ✅ 標準的なASCIIを使用
 result = value
 ```
+
+#### Nested code blocks
+
+コードブロック内にさらにコードブロックを記載する場合（例: Markdown構文の例を示す場合）は、ネスト構文を使用します。
+
+**ネストの方法:**
+
+外側のコードブロックのバッククォートの数を増やします：
+- 通常のコードブロック: 3つのバッククォート（```）
+- 1段階ネスト: 4つのバッククォート（````）
+- 2段階ネスト: 5つのバッククォート（`````）
+
+**例:**
+
+`````markdown
+# ❌ 正しくレンダリングされない
+```markdown
+# MyST構文の例
+```{note}
+This is a note.
+```
+```
+
+# ✅ 正しいネスト構文
+````markdown
+# MyST構文の例
+```{note}
+This is a note.
+```
+````
+`````
+
+**使用例:**
+
+このファイル内でもネスト構文を使用しています：
+- Markup Syntax セクション（46-64行）: MyST構文の例
+- Unknown lexers セクション（134-144行）: コードブロックの例
+
+**参考:**
+- [MyST Parser - Nesting Directives](https://myst-parser.readthedocs.io/en/v0.15.1/syntax/syntax.html#nesting-directives)
 
 ## Structure Guidelines
 
